@@ -1,0 +1,11 @@
+<h1> Add a new User</h1>
+ 
+ <%= form_for @user do |f|%>
+ Name: <%= f.text_field :name %>
+ Email: <%= f.text_field :email %>
+ Username: <% f.text_field :username %>
+ <%= check_box_tag(:facebook) %>
+ <%= label_tag(:facebook, 'Sign In with Facebook') %>
+ <% end %>
+
+ <%= link_to 'Back to list of users', users_path %>

@@ -1,0 +1,8 @@
+<h1>Product Page</h1>
+<ul>
+  <% @products.each do |p|%>
+  <li>
+    <strong><%=p.name%></strong> -- <%=p.brand%>
+  </li>
+  <% end %>
+</ul>

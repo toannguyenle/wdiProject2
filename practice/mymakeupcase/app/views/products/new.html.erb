@@ -1,0 +1,12 @@
+<h1>Add new product to your makeup case</h1>
+
+<%= form_for @product do |f|%>
+  Brand: <%= f.text_field :brand %>
+  SKU: <%= f.text_field :sku%>
+  Name: <%= f.text_field :name %>
+  Vol.: <%= f.text_field :volume %>
+
+  <%= f.submit 'Add to my collection' %>
+  <% end %>
+
+  <%= link_to 'Back to my case!', products_path %>

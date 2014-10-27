@@ -1,0 +1,5 @@
+<h1> <%= @user.name %> welcome to your page</h1>
+<h4>Username: <%=@user.name%></h4>
+<p> Your email address is: <%=@user.email%>. You <%= @user.facebook=="true"? "did" : "did not"%> sign up for our site through Facebook.</p>
+
+<%= link_to 'Back to user list', users_path%>
