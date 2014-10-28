@@ -2,7 +2,7 @@
 <ul>
   <% @users.each do |u|%>
   <li>
-    <strong><%=u.name%></strong> -- <%=u.username%>
+    <strong><%=u.name%></strong> -- <%=u.username%> -- <%=u.facebook%> -- <%=u.facebook=="true"? "did" : "did not"%>  Facebook.
   </li> 
   <%end%>
 </ul>
