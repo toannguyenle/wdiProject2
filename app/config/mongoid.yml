@@ -1,3 +1,7 @@
+production:
+  session:
+    default:
+
 development:
   # Configure available database sessions. (required)
   sessions:
