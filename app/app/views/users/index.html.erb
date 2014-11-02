@@ -1,1 +1,28 @@
-<div>USER INDEX</div>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <h1>Users List</h1>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Agree Marketing</th>
+      <th>Member Since</th>
+      <th>MakeUpCase ID</th>
+      <th>FaceBook API</th>
+    </tr>
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= u.name %></td>
+          <td><%= u.email %></td>
+          <td><%= u.agree_marketing %></td>
+          <td><%= u.member_since %></td>
+          <td><%= u.makeupcase_id %></td>
+          <td><%= u.facebookAPI %></td>
+        </tr>
+      <% end %>
+  </table>
+</div>
+
