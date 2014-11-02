@@ -10,8 +10,10 @@
       <th>Email</th>
       <th>Agree Marketing</th>
       <th>Member Since</th>
-      <th>MakeUpCase ID</th>
-      <th>FaceBook API</th>
+      <th>Makeup Case Contents</th>
+      <th>More info</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
       <% @users.each do |u| %>
         <tr>
@@ -19,8 +21,16 @@
           <td><%= u.email %></td>
           <td><%= u.agree_marketing %></td>
           <td><%= u.member_since %></td>
-          <td><%= u.makeupcase_id %></td>
-          <td><%= u.facebookAPI %></td>
+          <td>
+            <% if u.products %>
+              <% u.products.each do |p| %>
+              <%= p.name %> - <%= p. brand%> - <%= p.like_or_not %> - <%= p.date_first_use %><br />
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= link_to '+', u %></td>
+          <td><%= link_to 'Edit', edit_user_path(u) %></td>
+          <td><%= link_to 'X', u, method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
       <% end %>
   </table>

@@ -31,13 +31,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.new(params.require(:user).permit(:email, :password, :password_confirmation))
-    if user.save
-      # the moment you sign up it logs  you in
-      session[:user_id] = user.id
-      redirect_to users_path
+    @user = User.find(params[:id])
+    if @user.update_attributes(params.require(:user).permit(:name, :email, :password, :password_confirmation, :agree_marketing))
+      redirect_to user_path(@user)
     else
-      redirect_to new_user_path
+      redirect_to edit_user_path(@user)
     end
   end
 
