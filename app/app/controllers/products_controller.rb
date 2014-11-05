@@ -27,6 +27,11 @@ class ProductsController < ApplicationController
       redirect_to new_product_path
     end
   end
+  # Add products into your case from search query
+  def add_to_case
+    raise respond_to.inspect
+    @select_product = params[:select_product]
+  end
 
   def edit
     @product = Product.find(params[:id])

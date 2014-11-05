@@ -7,10 +7,9 @@
           <th>Brand</th>
           <th>Name</th>
           <th>Size</th>
-          <th>UPC</th>
           <th>Ave Price</th>
           <th>Pictures</th>
-          <th>Add</th>
+          <th></th>
         </tr>
         <% @products.each_with_index do |r,index| %>
           <tr>
@@ -29,13 +28,8 @@
             <% else %>
               <td>-</td>
             <% end %>
-            <% if r['upc'] %>
-              <td class="vert-align"><%= r['upc'] %></td>
-            <% else %>
-              <td>-</td>
-            <% end %>
-            <% if r['ave_price'] %>
-              <td class="vert-align"><%= r['ave_price'] %></td>
+            <% if r['avg_price'] %>
+              <td class="vert-align">$<%= r['avg_price'] %></td>
             <% else %>
               <td>-</td>
             <% end %>
@@ -46,11 +40,24 @@
             <% end %>
             <td class="vert-align">
               <div class="btn-group">
-                <%= button_to('Add', products_path(:product => r), :controller => 'products_controller', :action => 'create', :data => {:id => index, :factual_id => r['factual_id']}) %>
+                
+                <%= button_to('Add', products_path(:product => r), :controller => 'products_controller', :action => 'add_to_case', :data => {:id => index, :factual_id => r['factual_id'], :toggle=>'modal', :target => '.bs-example-modal-sm'}, :class => "btn btn-primary") %>
+                <%= button_to('Adda', add_to_case_path(:product => r), :controller => 'products_controller', :action => 'new', :data => {:id => index, :factual_id => r['factual_id'], :toggle=>'modal', :target => '.bs-example-modal-sm'}, :class => "btn btn-primary") %>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
               </div>
             </td>
           </tr>
         <% end %>
       </table>
+  </div>
+</div>
+
+<!-- PARTIAL MODAL-->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <%= render 'add_to_case', modal: true %>
+    </div>
   </div>
 </div>

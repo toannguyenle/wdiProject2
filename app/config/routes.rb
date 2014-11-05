@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'product_search' => 'product_search#index', as: :product_search
   get 'product_search/find' => 'product_search#index'
   post 'product_search/find' => 'product_search#find', as: :find
+
   # USER ROUTES
   get 'users/' => 'users#index'
   get 'users/new' => 'users#new', as: :new_user
@@ -27,10 +28,12 @@ Rails.application.routes.draw do
   # PRODUCT ROUTES
   get 'products/' => 'products#index'
   get 'products/new' => 'products#new', as: :new_product
+  get 'products/add_to_case' => 'products#add_to_case', as: :add_to_case
   get 'products/:id' => 'products#show', as: :product
   post 'products/' => 'products#create'
   get 'products/:id/edit' => 'products#edit', as: :edit_product
   patch 'products/:id' => 'products#update'
   delete 'products/:id' => 'products#destroy'
+
 end
 

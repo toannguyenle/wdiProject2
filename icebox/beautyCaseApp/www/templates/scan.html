@@ -1,0 +1,34 @@
+<ion-header-bar class="bar-positive">
+  <button class="button button-clear" ng-click="newTask()">New</button>
+  <h1 class="title">Scan Item</h1>
+  <button class="button button-clear" ng-click="logout()">Logout</button>
+</ion-header-bar>
+<ion-content class="has-header padding" has-tabs="true" on-refresh="onRefresh()">
+  <div class="card" ng-repeat="item in list" id="{{item.key}}" >
+    <div class="item item-text-wrap">
+      <span>{{ item.item }}</span>
+      <br/>  <br/>
+      <p class="actions padding">
+        <i class="ion-checkmark-circled icon-actions margin" ng-click="markCompleted('{{item.key}}')"></i>
+        <i class="ion-trash-b icon-actions margin" ng-click="deleteItem('{{item.key}}')"></i>
+      </p>
+    </div>
+  </div>
+  <div class="card" >
+    <div class="item item-text-wrap" ng-show="noData">
+      <span>
+      No Items in your beauty case. Click  <a href="javascript:" ng-click="newTask()">Here</a> and add one
+      </span>
+    </div>
+  </div>
+</ion-content>
+<ion-tabs class="tabs-icon-top">
+  <ion-tab title="Scan Products" icon-on="ion-ios7-browsers"
+    icon-off="ion-ios7-browsers-outline" href="#/scan">
+    <ion-nav-view name="scan"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="Scan List" icon-on="ion-ios7-checkmark"
+    icon-off="ion-ios7-checkmark-outline" href="#/scan/completed">
+    <ion-nav-view name="scan-completed"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>
